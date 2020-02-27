@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  
+  has_many :events , foreign_key: :creater_id , class_name: "Event"
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
