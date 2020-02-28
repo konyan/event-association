@@ -1,0 +1,6 @@
+<div class="col-md-4">
+     <h1>Events List</>
+     <% Event.find_each do |event| %>
+      <h3><%= event.title%></h3>
+      <%end%>
+</div>

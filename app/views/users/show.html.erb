@@ -1,6 +1,16 @@
+<div class="container">
+<div class="row">
+<div class="col-md-8">
 <h1><%= @user.name %></h1>
 <% @user.events.each do |event| %>
 
 <h3><%=event.title%></h3>
 <h3><%=event.date%></h3>
 <%end%>
+</div>
+<div class="col-md-4">
+<button>
+<%= link_to "Signout", signout_path, method: :delete ,class:'login100-form-btn'%>
+</button>
+</div>
+</div>

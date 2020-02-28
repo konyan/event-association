@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  
+  attr_accessor :remember_token
+  before_create :create_remember_digest
   has_many :events , foreign_key: :creater_id , class_name: "Event"
 
   validates :name,  presence: true, length: { maximum: 50 }
@@ -10,4 +11,23 @@ class User < ApplicationRecord
   has_secure_password
   validates :password,presence: true, length: { minimum: 6 }
 
+  def self.digest(string)
+    return nil if string.nil?
+    Digest::SHA1.hexdigest string
+  end
+
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(self.remember_token))
+  end
+  private
+
+  def create_remember_digest
+    self.remember_token = User.new_token
+    self.remember_digest = User.digest(self.remember_token)
+  end
 end

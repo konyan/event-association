@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-# "session"=>{"email"=>"nyan@gmail.com", "password"=>"[FILTERED]"}
     user = User.find_by(email: params[:session][:email].downcase)
 
     if user && user.authenticate(params[:session][:password])
@@ -13,5 +12,10 @@ class SessionsController < ApplicationController
       flash.now[:danger] ="email/password not correct."
       render 'new'
     end
+  end
+
+  def destroy
+    signout
+    redirect_to signin_path
   end
 end
