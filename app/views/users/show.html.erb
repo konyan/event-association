@@ -2,10 +2,9 @@
 <div class="row">
 <div class="col-md-8">
 <h1><%= @user.name %></h1>
-<% @user.events.each do |event| %>
+<% @user.attendings.each do |user| %>
 
-<h3><%=event.title%></h3>
-<h3><%=event.date%></h3>
+<h3><%=user.attended_event.title%></h3>
 <%end%>
 </div>
 <div class="col-md-4">
