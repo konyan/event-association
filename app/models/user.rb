@@ -2,6 +2,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   before_create :create_remember_digest
   has_many :events , foreign_key: :creater_id , class_name: "Event"
+  has_many :attendings, foreign_key: "attendee_id"
+  has_many :attended_events,  through: :attendings
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
