@@ -1,10 +1,12 @@
 <div class=container>
   <div class="row">
     <div class="col-md-8">
-    <h1><%= current_user.name%></h1>
-      <h1>Event</h1>
-      <h2><%= @event.title%></h2>
-      <h2><%= @event.date%></h2>
+      <h1>Attended Events</h1>
+      <h2><% @event.attendings.each do |event|%></h2>
+      <h2><%= event.attended_event.title%></h2>
+         <h2><%= event.attended_event.date%></h2>
+      <h2><%= event.attendee.name %></h2>
+      <%end%>
     </div>
   </div>
 </div>
