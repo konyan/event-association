@@ -1,6 +1,13 @@
 class EventsController < ApplicationController
-before_action :check_login, only: %i[new create]
-      
+
+    before_action :check_login, only: %i[new create]
+
+    def index
+        @events = Event.all
+        @upcoming = Event.upcoming_event
+        @previous = Event.previous_event
+    end
+
     def new
         @event = Event.new
     end

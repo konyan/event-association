@@ -1,6 +1,62 @@
-<div class="col-md-4">
-     <h1>Events List</>
-     <% Event.find_each do |event| %>
-      <h3><%= event.title%></h3>
-      <%end%>
+
+
+<div class="container" style="margin-top : 1rem">
+<div class="row">
+      <div class="col-md-4">
+            <div class="card">
+            <div class="card-header">
+                  All Events
+            </div>
+            <ul class="list-group list-group-flush">
+                  <% @events.each do |event| %>
+                        <li class="list-group-item"> <%= event.title%>
+                              <small>(<%= event.date%> )
+                              <%= link_to "show", event_path(event)%>
+                              </small>
+                        </li>
+                  <%end %>
+            </ul>
+            </div>
+      </div>
+
+      <div class="col-md-4">
+            <div class="card">
+            <div class="card-header">
+                  Upcoming Events
+            </div>
+            <ul class="list-group list-group-flush">
+                  <% @upcoming.each do |event| %>
+                        <li class="list-group-item"> <%= event.title%>
+                              <small>(<%= event.date%> )
+                                     <%= link_to "show", event_path(event)%>
+                                     <% unless create_user_check(event) && attend_user_check(event) %>
+                                          <%=  link_to "invite", event_path(event)%>
+                                     <% end %>
+                              </small>
+                        </li>
+                  <%end %>
+            </ul>
+            </div>
+      </div>
+
+      <div class="col-md-4">
+            <div class="card">
+            <div class="card-header">
+                  Previous Events
+            </div>
+            <ul class="list-group list-group-flush">
+                  <% @previous.each do |event| %>
+                        <li class="list-group-item"> <%= event.title%>
+                              <small>(<%= event.date%> )
+                                     <%= link_to "show", event_path(event)%>
+
+                              </small>
+
+                        </li>
+                  <%end %>
+            </ul>
+            </div>
+      </div>
+
+</div>
 </div>

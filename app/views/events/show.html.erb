@@ -1,12 +1,27 @@
-<div class=container>
+<div class=container align="center" style="margin-top: 4rem">
+  <button type="button" class="btn btn-link">
+    <%= link_to "Back to all Events", events_path%>
+  </button>
+
   <div class="row">
-    <div class="col-md-8">
-      <h1>Attended Events</h1>
-      <h2><% @event.attendings.each do |event|%></h2>
-      <h2><%= event.attended_event.title%></h2>
-         <h2><%= event.attended_event.date%></h2>
-      <h2><%= event.attendee.name %></h2>
-      <%end%>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title"><%= @event.title %></h2>
+        <p class="card-text">Created By:<%= @event.creater.name %></p>
+        <p class="card-text"><%= @event.date %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Attended Users
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @event.attendings.each do |attending|%>
+        <li class="list-group-item"><%= attending.attendee.name%></li>
+        <%end%>
+      </ul>
     </div>
   </div>
 </div>
