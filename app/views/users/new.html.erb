@@ -5,6 +5,7 @@
 					Account Login
 				</span>
         <%= form_for(@user ,html: {class: "login100-form validate-form p-b-33 p-t-5"}) do |f| %>
+		<%= render 'shared/errors', object: f.object%>
         	<div class="wrap-input100 validate-input" data-validate = "Enter username">
              <%= f.text_field :name, class: 'input100 fa fa-user', placeholder: 'Enter name'%>
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>

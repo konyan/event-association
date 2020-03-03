@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @upcoming_events = current_user.attended_events.upcoming_event
+     @upcoming_events = current_user.attended_events.upcoming_event
     @previous_events = current_user.attended_events.previous_event
   end
 
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Successfully registered users"
+      log_in @user
       redirect_to @user
     else
       render :new
