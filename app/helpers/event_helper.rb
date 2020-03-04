@@ -4,8 +4,8 @@ module EventHelper
   end
 
   def attend_user_check(event)
-    current_user.attended_events.each do |event|
-      return event.id == current_user.id
+    current_user.attended_events.each do |e|
+      return e.id == event.id
     end
   end
 

@@ -10,11 +10,11 @@
            <%= render 'shared/errors', object: f.object%>
             <label class="form-label" id="valueFromMyButton" for="name">Event Title</label>
             <%= f.text_field :title, class: "input", placeholder: 'Add title to event'%>
-            <label class="form-label" id="valueFromMyButton" for="count">add date</label>
+            <label class="form-label" id="valueFromMyButton" for="date">add date</label>
             <%= f.date_field :date, class: "input", placeholder: 'Add date'%>
-            <label class="form-label" id="valueFromMyButton" for="name">Event Place</label>
+            <label class="form-label" id="valueFromMyButton" for="place">Event Place</label>
             <%= f.text_field :place, class: "input", placeholder: 'Add place'%>
-            <label class="form-label" id="valueFromMyButton" for="name">Event Description</label>
+            <label class="form-label" id="valueFromMyButton" for="description">Event Description</label>
             <%= f.text_field :description, class: "input", placeholder: 'Add Description'%>
             <%= f.submit "Create Event", class:'button',id: "ok-button" %>
           </div>
