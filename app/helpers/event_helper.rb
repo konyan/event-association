@@ -4,7 +4,6 @@ module EventHelper
   end
 
   def attend_user_check(event)
-    
     !current_user.attended_events
       .select { |e| e.id == event.id }.empty?
   end
@@ -12,9 +11,9 @@ module EventHelper
   def attend_user(event_id)
     @attend = Attending.new(attendee_id: current_user.id, attended_event_id: event_id)
     if @attend.save
-      flash[:success] = "Added to your attending events"
+      flash[:success] = 'Added to your attending events'
     else
-      flash[:danger] = "Not added to list"
+      flash[:danger] = 'Not added to list'
       render 'show'
     end
   end
