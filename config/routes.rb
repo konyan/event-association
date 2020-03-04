@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   root 'events#index'
   post '/create_attend', to: 'events#create_attend'
 
-  get '/signin', to:'sessions#new'
+  get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
-  get '/signup' , to: 'users#new'
-  post '/signup' , to: 'users#create'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   delete '/signout', to: 'sessions#destroy'
-  resources :users , only: %i[new create index show]
+  resources :users, only: %i[new create index show]
   resources :events, only: %i[new create index show]
 end
