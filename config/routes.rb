@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'events#index'
   post '/create_attend', to: 'events#create_attend'
+
   get '/signin', to:'sessions#new'
   post '/signin', to: 'sessions#create'
   get '/signup' , to: 'users#new'

@@ -41,7 +41,7 @@
                           <%if current_user%>
 
                               <% unless create_user_check(event) || attend_user_check(event)%>
-                                    <%= button_to "attend", {action: "create_attend",event_id: event.id },method: :post %>
+                                    <%= button_to "attend", {action: "create_attend",event_id: event.id },method: :post , class:"list-group-item"%>
                               <%end%>
                           <%end%>
                         </small>
