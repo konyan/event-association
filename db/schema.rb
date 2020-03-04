@@ -10,30 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_303_202_951) do
-  create_table 'attendings', force: :cascade do |t|
-    t.integer 'attendee_id'
-    t.integer 'attended_event_id'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+ActiveRecord::Schema.define(version: 2020_03_03_202951) do
+
+  create_table "attendings", force: :cascade do |t|
+    t.integer "attendee_id"
+    t.integer "attended_event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'events', force: :cascade do |t|
-    t.string 'title'
-    t.date 'date'
-    t.string 'place'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.integer 'creater_id'
-    t.text 'description'
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.date "date"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "creater_id"
+    t.text "description"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.string 'password_digest'
-    t.string 'remember_digest'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "remember_digest"
   end
+
 end
