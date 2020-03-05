@@ -1,0 +1,26 @@
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Account Login
+				</span>
+        <%= form_for(:session,url: signin_path,html: {class: "login100-form validate-form p-b-33 p-t-5"}) do |f| %>
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+             <%= f.email_field :email, class: 'input100 fa fa-user', placeholder: 'email'%>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+            <button>
+              <%= f.submit "Sign In", class:'login100-form-btn' %>
+            </button>
+					</div>
+          <div class="container-login100-form-btn m-t-32">
+            <button>
+                <%= link_to "Sign Up", signup_path, class:'login100-form-btn' %>
+            </button>
+					</div>
+			</div>
+		</div>
+	</div>
+	 <% end %>

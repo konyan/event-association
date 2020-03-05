@@ -1,0 +1,28 @@
+<div class=container align="center" style="margin-top: 4rem">
+  <button type="button" class="btn btn-link">
+    <%= link_to "Back to all Events", events_path%>
+  </button>
+
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title"><%= @event.title %></h2>
+        <p class="card-text">Created By:<%= @event.creater.name %></p>
+        <p class="card-text"><%= @event.place %> | <%= @event.description %></p>
+        <p class="card-text"><%= @event.date %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Attending Users
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @event.attendings.each do |attending|%>
+        <li class="list-group-item"><%= attending.attendee.name%></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>

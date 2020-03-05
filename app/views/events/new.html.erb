@@ -1,0 +1,24 @@
+    <button type="button" class="btn btn-link">
+    <%= link_to "User profile", user_path(current_user)%>
+  </button>
+  <div class="content">
+    <div class="events-container">
+      <h2 class="dialog-header"> Add New Event </h2>
+      <div class="event-card">
+         <%= form_for(@event,html: {class: "form", id: "form"}) do |f| %>
+          <div class="form-container">
+           <%= render 'shared/errors', object: f.object%>
+            <label class="form-label" id="valueFromMyButton" for="name">Event Title</label>
+            <%= f.text_field :title, class: "input", placeholder: 'Add title to event'%>
+            <label class="form-label" id="valueFromMyButton" for="date">add date</label>
+            <%= f.date_field :date, class: "input", placeholder: 'Add date'%>
+            <label class="form-label" id="valueFromMyButton" for="place">Event Place</label>
+            <%= f.text_field :place, class: "input", placeholder: 'Add place'%>
+            <label class="form-label" id="valueFromMyButton" for="description">Event Description</label>
+            <%= f.text_field :description, class: "input", placeholder: 'Add Description'%>
+            <%= f.submit "Create Event", class:'button',id: "ok-button" %>
+          </div>
+         <%end%>
+      </div>
+  </div>
+</div>
