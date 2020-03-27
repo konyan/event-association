@@ -1,14 +1,14 @@
 <div class="container" align="center">
 
-<button type="button" class="btn btn-link">
-    <%= link_to "Back to all Events", events_path%>
+<button class='mt-1'>
+    <%= link_to "Back to all Events", events_path,class:"btn btn-primary"%>
 </button>
-<button>
-<%= link_to "Create Event", new_event_path ,class:'btn btn-link'%>
+<button class='mt-1'>
+<%= link_to "Create Event", new_event_path ,class:'btn btn-primary'%>
 </button>
 
-<button>
-<%= link_to "Signout", signout_path, method: :delete ,class:'btn btn-link'%>
+<button class='mt-1'>
+<%= link_to "Signout", signout_path, method: :delete ,class:'btn btn-primary'%>
 </button>
 
 
@@ -24,7 +24,7 @@
           <li class="list-group-item">
             <%= event.title %>
              <small>(<%= event.date%> )
-             <%= link_to "show", event_path(event)%>
+             <%= link_to "show", event_path(event),class:"btn btn-primary"%>
              </small>
           </li>
           <% end %>
@@ -42,7 +42,7 @@
           <li class="list-group-item">
             <%= event.title %>
              <small>(<%= event.date%> )
-             <%= link_to "show", event_path(event)%>
+             <%= link_to "show", event_path(event),class:"btn btn-primary"%>
              </small>
           </li>
           <% end %>

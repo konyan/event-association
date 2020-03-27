@@ -1,71 +1,69 @@
-
-
 <div class="container" style="margin-top : 4rem" align="center">
-<%if current_user%>
-<button type="button" class="btn btn-link">
-    <%= link_to "Go To User Profile", user_path(current_user)%>
-</button>
-<%else%>
-<button type="button" class="btn btn-link">
-    <%= link_to "Login/Sign in", signin_path%>
-</button>
-<%end%>
-<div class="row" style="margin-top : 4rem">
-      <div class="col-md-4">
-            <div class="card">
-            <div class="card-header">
-                  All Events
+      <%if current_user%>
+      <button>
+            <%= link_to "Go To User Profile", user_path(current_user),class:"btn btn-primary"%>
+      </button>
+      <%else%>
+      <button>
+            <%= link_to "Login/Sign in", signin_path,class:"btn btn-primary"%>
+      </button>
+      <%end%>
+      <div class="row" style="margin-top : 4rem">
+            <div class="col-md-4">
+                  <div class="card">
+                        <div class="card-header">
+                              All Events
+                        </div>
+                        <ul class="list-group list-group-flush">
+                              <% @events.each do |event| %>
+                              <li class="list-group-item"> <%= event.title%>
+                                    <small>(<%= event.date%> )
+                                          <%= link_to "show", event_path(event),class:"btn btn-primary"%>
+                                    </small>
+                              </li>
+                              <%end %>
+                        </ul>
+                  </div>
             </div>
-            <ul class="list-group list-group-flush">
-                  <% @events.each do |event| %>
-                        <li class="list-group-item"> <%= event.title%>
-                              <small>(<%= event.date%> )
-                              <%= link_to "show", event_path(event)%>
-                              </small>
-                        </li>
-                  <%end %>
-            </ul>
+
+            <div class="col-md-4">
+                  <div class="card">
+                        <div class="card-header">
+                              Upcoming Events
+                        </div>
+                        <ul class="list-group list-group-flush">
+                              <% @upcoming.each do |event| %>
+                              <li class="list-group-item"> <%= event.title%>
+                                    <small>(<%= event.date%> )</small>
+                                    <%= link_to "show", event_path(event),class:"btn btn-primary"%>
+                                    <%if current_user%>
+                                    <% unless create_user_check(event) || attend_user_check(event)%>
+                                    <%= button_to "attend", {action: "create_attend",event_id: event.id },method: :post , class:"btn btn-primary"%>
+                                    <%end%>
+                                    <%end%>
+                              </li>
+                              <%end %>
+                        </ul>
+                  </div>
             </div>
+
+            <div class="col-md-4">
+                  <div class="card">
+                        <div class="card-header">
+                              Previous Events
+                        </div>
+                        <ul class="list-group list-group-flush">
+                              <% @previous.each do |event| %>
+                              <li class="list-group-item"> <%= event.title%>
+                                    <small>(<%= event.date%> )
+                                          <%= link_to "show", event_path(event),class:"btn btn-primary"%>
+                                    </small>
+
+                              </li>
+                              <%end %>
+                        </ul>
+                  </div>
+            </div>
+
       </div>
-
-      <div class="col-md-4">
-            <div class="card">
-            <div class="card-header">
-                  Upcoming Events
-            </div>
-            <ul class="list-group list-group-flush">
-                  <% @upcoming.each do |event| %>
-                        <li class="list-group-item"> <%= event.title%>
-                        <small>(<%= event.date%> )</small>
-                        <%= link_to "show", event_path(event)%>
-                        <%if current_user%>
-                        <% unless create_user_check(event) || attend_user_check(event)%>
-                        <%= button_to "attend", {action: "create_attend",event_id: event.id },method: :post , class:"btn btn-primary"%>
-                        <%end%>
-                        <%end%>
-                        </li>
-                  <%end %>
-            </ul>
-            </div>
-      </div>
-
-      <div class="col-md-4">
-            <div class="card">
-            <div class="card-header">
-                  Previous Events
-            </div>
-            <ul class="list-group list-group-flush">
-                  <% @previous.each do |event| %>
-                        <li class="list-group-item"> <%= event.title%>
-                              <small>(<%= event.date%> )
-                                     <%= link_to "show", event_path(event)%>
-                              </small>
-
-                        </li>
-                  <%end %>
-            </ul>
-            </div>
-      </div>
-
-</div>
 </div>
